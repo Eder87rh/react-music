@@ -1,6 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import Formulario from './components/Formulario';
 import axios from 'axios';
+import Cancion from './components/Cancion';
 
 function App() {
 
@@ -26,6 +27,16 @@ function App() {
       <Formulario
         consultarAPILetra={consultarAPILetra}
       />
+      <div className="container mt-5">
+        <div className="col md-6">
+
+        </div>
+        <div className="col md-6">
+          <Cancion
+            letra={letra}
+          />
+        </div>
+      </div>
     </Fragment>
   )
 }
