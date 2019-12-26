@@ -18,9 +18,31 @@ function App() {
     // consultar la api
     const resultado = await axios(url);
 
+    // almacenar el artista que se busco
+    agregarArtista(artista);
+
     // almacenar la letra en el state
     agregarLetra(resultado.data.lyrics);
+
+    
   }
+
+  
+  // Metodo para consultar la API de información
+  const consultarAPIInfo = React.useCallback(async () => {
+      const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artista}`;
+      const resultado = await axios(url);
+      console.log("TCL: consultarAPIInfo -> resultado", resultado)
+      
+      agregarInfo(resultado.data.artists[0]);
+      console.log(info);
+  }, [artista, info]);
+
+
+  useEffect(() => {
+    consultarAPIInfo();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [artista]);
 
   return (
     <Fragment>
