@@ -2,6 +2,7 @@ import React, {useState, useEffect, Fragment} from 'react';
 import Formulario from './components/Formulario';
 import axios from 'axios';
 import Cancion from './components/Cancion';
+import Informacion from './components/Informacion';
 
 function App() {
 
@@ -30,12 +31,14 @@ function App() {
   
   // Metodo para consultar la API de información
   const consultarAPIInfo = React.useCallback(async () => {
+    if(artista){
       const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artista}`;
       const resultado = await axios(url);
       console.log("TCL: consultarAPIInfo -> resultado", resultado)
       
       agregarInfo(resultado.data.artists[0]);
       console.log(info);
+    }
   }, [artista, info]);
 
 
@@ -51,7 +54,9 @@ function App() {
       />
       <div className="container mt-5">
         <div className="col md-6">
-
+          <Informacion
+            info={info}
+          />
         </div>
         <div className="col md-6">
           <Cancion
