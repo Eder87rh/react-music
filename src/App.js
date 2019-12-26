@@ -53,15 +53,17 @@ function App() {
         consultarAPILetra={consultarAPILetra}
       />
       <div className="container mt-5">
-        <div className="col md-6">
-          <Informacion
-            info={info}
-          />
-        </div>
-        <div className="col md-6">
-          <Cancion
-            letra={letra}
-          />
+        <div className="row">
+          <div className="col-md-6">
+            <Informacion
+              info={info}
+            />
+          </div>
+          <div className="col-md-6">
+            <Cancion
+              letra={letra}
+            />
+          </div>
         </div>
       </div>
     </Fragment>
